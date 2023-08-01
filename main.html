@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="style.CSS" rel="stylesheet" type="text/css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Form</title>
+
+    <style>
+        error-message{
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <!--<img src="image1.jpg" alt=""align="right">-->
+
+    <div class="main">
+    <div class="container">
+        
+
+        <form onsubmit="return validateform()" methood="get">
+                <!--<img src="image1.jpg" alt="" id="img1"><div class="input-name">-->
+        
+            <h2>Create an account free</h2>
+
+            <p>Free Forever, No Payment Needed</p>
+
+        <div class="input-name">
+            <label aria-setsize="10px">Your email</label><br>
+            <input type="text" class="email" id="email" style="background-color:gainsboro;" size="15px" placeholder="youremail@.com" required>
+            <span id="error-email" class="error-message" style="color: red;"></span>
+        </div>
+
+        <div class="input-name">
+            <label>Create Username</label><br>
+            <input type="text" class="uname" id="uname" placeholder="youreusername" style="background-color:gainsboro;" size="30px" height="20px" required>
+            <span id="error-uname" class="error-message" style="color: red;"></span>
+        </div>
+
+        <div class="input-name">
+            <label>Password</label><br>
+            <input type="password" class="password" id="password" placeholder="yourepassword" style="background-color:gainsboro;" size="30px" required><br>
+            <span id="error-password" class="error-message" style="color: red;"></span>
+        </div>
+
+        <div class="input-name">
+            <label>Confirm Password</label><br>
+            <input type="password" class="Confirmpassword" id="Confirmpassword" placeholder="Confirmpassword" style="background-color:gainsboro;" size="30px" required><br>
+            <span id="error-Confirm" class="error-message" style="color: red;"></span>
+        </div>
+
+        <div class="input-name">
+            <input type="checkbox" class="check" id="check"  placeholder="yourepassword" required>
+            <label>By Creating an account you are agreeing to our Terms and Condition and Privacy Policy</label>
+            <span id="error-check" class="error-message"></span>
+        </div>
+
+        <div id="sub">
+            <input type="submit" value="SIGN UP" class="button">
+        </div><br>
+
+        <div id="login2">
+            <a href="#">Already have an account</a>
+        </div>
+
+        </form>
+
+    
+    </div>
+        <div class="img">
+            <img src="IMG1.png"   class="img2" />
+        </div>
+    </div>
+</body>
+
+<script>
+    function validateform(){
+        
+        // Declaring the variable
+        var email=document.getElementById("email").value;
+        var uname=document.getElementById("uname").value;
+        var password=document.getElementById("password").value;
+        var Confirmpassword=document.getElementById("Confirmpassword").value;
+        var valid=true
+        
+        //Clearing the error message
+        document.getElementById('error-email').textContent="";
+        document.getElementById('error-uname').textContent="";
+        document.getElementById('error-password').textContent="";
+        document.getElementById('error-Confirm').textContent="";
+
+
+        //now checking the conditions
+        var email_pattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if(email=="" || !email_pattern.test(email)){
+            document.getElementById('error-email').textContent='Please Enter valid Email';
+            valid=false;
+        }   
+        
+
+        var user_name_pattern=/^[a-zA-Z\-]+$/;
+
+        if(uname=="" || !user_name_pattern.test(uname)){
+            document.getElementById('error-uname').textContent='Please Enter valid uname';
+            valid=false;
+        }
+
+        var minNumberofChars = 6;
+        var maxNumberofChars = 16;
+
+        if(password=="" || password.length < minNumberofChars || password.length > maxNumberofChars){
+            document.getElementById('error-password').textContent='Please Enter valid password';
+            valid=false;
+        }
+
+        if(password!=Confirmpassword){
+            document.getElementById('error-Confirm').textContent='Passwords did not match';
+            valid=false;
+        }
+        
+
+        return valid;
+    
+    }
+</script>
+
+</html>
